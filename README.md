@@ -9,6 +9,17 @@ how usefrom Vue ?
  import VueTimepickr from 'vue-timepickr.js';
 
 ```
+and add for you Vue components
+
+```
+  ...
+  components: { VueTimepickr },
+  ...
+
+```
+
+
+
 **Step2**
 ```
 <vue-timepickr v-model="time"></vue-timepickr>

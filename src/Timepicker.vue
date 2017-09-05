@@ -28,15 +28,17 @@
   </div>
 </template>
 
+
+
 <script>
-import store from './store';
+import store from './store.js';
 import { filteredDigits } from './helpers';
 
-import KeyboardEvents from './mixins/KeyboardEvents';
-import CommonActions from './mixins/CommonActions';
-import ActiveBackground from 'components/ActiveBackground';
-import TimeUnit from 'components/TimeUnit';
-import Numpad from 'components/Numpad';
+import KeyboardEvents from './mixins/KeyboardEvents.js';
+import CommonActions from './mixins/CommonActions.js';
+import ActiveBackground from './components/ActiveBackground.vue';
+import TimeUnit from './components/TimeUnit.vue';
+import Numpad from './components/Numpad.vue';
 
 export default {
   name: 'Timepicker',

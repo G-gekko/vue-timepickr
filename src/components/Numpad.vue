@@ -51,7 +51,7 @@ import store from '../store';
 import { filteredDigits } from '../helpers';
 import CommonActions from '../mixins/CommonActions';
 
-import Number from './Number';
+import Number from './Number.vue';
 
 export default {
   name: 'Numpad',

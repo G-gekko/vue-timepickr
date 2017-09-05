@@ -1,9 +1,12 @@
 module.exports = {
   entry: './src/main.js',                                   // Главный фаил, который включает все остальные модули
   output: {
-    filename: './build/vue-timepickr.js'                       // Итоговый фаил, в который происходит компиляция
+    filename: './build/vue-timepickr.js',                      // Итоговый фаил, в который происходит компиляция
+    library: 'VueTimepickr',
+    libraryTarget: 'umd'
   },
-  resolve: {
+
+resolve: {
       alias: {
         vue: 'vue/dist/vue.js'
       }

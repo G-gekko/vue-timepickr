@@ -41,7 +41,7 @@ import TimeUnit from './components/TimeUnit.vue';
 import Numpad from './components/Numpad.vue';
 
 export default {
-  name: 'Timepicker',
+  name: 'VueTimepickr',
   props: ['value'],
   mixins: [KeyboardEvents, CommonActions],
   components: {

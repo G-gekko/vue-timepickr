@@ -6,7 +6,7 @@ how usefrom Vue ?
 
 **Step1**
 ```
- import VueTimepickr from 'vue-timepickr.js';
+ import VueTimepickr from 'lib/vue-timepickr';  // your path too vue-timepickr.js
 
 ```
 and add for you Vue components

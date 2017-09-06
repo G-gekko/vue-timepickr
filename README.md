@@ -9,7 +9,7 @@ how usefrom Vue ?
  import VueTimepickr from 'lib/vue-timepickr';  // your path too vue-timepickr.js
 
 ```
-and add for you Vue components
+and add for your Vue components
 
 ```
   ...

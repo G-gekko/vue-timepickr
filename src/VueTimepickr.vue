@@ -119,6 +119,7 @@ $mobile-breakpoint:   480px;
 .timepicker-wrap {
   display: inline-block;
   position: relative;
+  z-index: 1001;
 
   *, *::after, *::before {
       box-sizing: border-box;
@@ -190,7 +191,6 @@ $mobile-breakpoint:   480px;
     opacity: 1;
     transform: translate3d(-50%, 0, 0) scale(1);
     pointer-events: auto;
-    z-index: 1001;
 
     &:before {
       border-radius: $border-radius;

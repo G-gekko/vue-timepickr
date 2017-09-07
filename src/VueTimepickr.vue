@@ -190,6 +190,7 @@ $mobile-breakpoint:   480px;
     opacity: 1;
     transform: translate3d(-50%, 0, 0) scale(1);
     pointer-events: auto;
+    z-index: 1001;
 
     &:before {
       border-radius: $border-radius;

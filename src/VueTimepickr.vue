@@ -1,31 +1,33 @@
 <template>
-  <div class="timepicker-wrap">
-    <svg class="timepicker-icon timepicker-icon__clock" viewBox="0 0 32 32">
-      <path class="path1" d="M20.586 23.414l-6.586-6.586v-8.828h4v7.172l5.414 5.414zM16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 28c-6.627 0-12-5.373-12-12s5.373-12 12-12c6.627 0 12 5.373 12 12s-5.373 12-12 12z"></path>
-    </svg>
-    <input type="text" class="time" ref="timeInput" :value="value"
-      @focus="open"
-    >
-    <div class="timepicker" tabindex="0"
-        :class="{'is-open': isOpen}"
-        ref="timepicker"
-    >
-      <div class="timepicker__header">
-        Set time
-      </div>
-      <div class="timepicker__time">
-        <div class="flex-wrap">
-          <time-unit :value="time[0]" index="0"></time-unit>
-          <time-unit :value="time[1]" index="1"></time-unit>
-          <div class="timepicker__separator">:</div>
-          <time-unit :value="time[2]" index="2"></time-unit>
-          <time-unit :value="time[3]" index="3"></time-unit>
-          <active-background></active-background>
+    <div v-click-outside="closeOutside">
+      <div class="timepicker-wrap">
+        <svg class="timepicker-icon timepicker-icon__clock" viewBox="0 0 32 32">
+          <path class="path1" d="M20.586 23.414l-6.586-6.586v-8.828h4v7.172l5.414 5.414zM16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 28c-6.627 0-12-5.373-12-12s5.373-12 12-12c6.627 0 12 5.373 12 12s-5.373 12-12 12z"></path>
+        </svg>
+        <input type="text" class="time" ref="timeInput" :value="value"
+          @focus="open"
+        >
+        <div class="timepicker" tabindex="0"
+            :class="{'is-open': isOpen}"
+            ref="timepicker"
+        >
+          <div class="timepicker__header">
+            Set time
+          </div>
+          <div class="timepicker__time">
+            <div class="flex-wrap">
+              <time-unit :value="time[0]" index="0"></time-unit>
+              <time-unit :value="time[1]" index="1"></time-unit>
+              <div class="timepicker__separator">:</div>
+              <time-unit :value="time[2]" index="2"></time-unit>
+              <time-unit :value="time[3]" index="3"></time-unit>
+              <active-background></active-background>
+            </div>
+          </div>
+          <numpad></numpad>
         </div>
       </div>
-      <numpad></numpad>
     </div>
-  </div>
 </template>
 
 
@@ -61,7 +63,27 @@ export default {
       return filteredDigits(this.activeIndex, this.digits, this.time);
     }
   },
+  directives: {
+        'click-outside': {
+            bind: function (el, binding, vnode) {
+                el.event = function (event) {
+                    // here I check that click was outside the el and his childrens
+                    if (!(el == event.target || el.contains(event.target))) {
+                        // and if it did, call method provided in attribute value
+                        vnode.context[binding.expression](event);
+                    }
+                };
+                document.body.addEventListener('click', el.event)
+            },
+            unbind: function (el) {
+                document.body.removeEventListener('click', el.event)
+            }
+        }
+    },
   methods: {
+    closeOutside(){
+          this.isOpen = false
+      },
     open () {
       this.time = this.value.replace(':', '').split('');
       this.$refs.timeInput.blur();
@@ -168,6 +190,7 @@ $mobile-breakpoint:   480px;
     opacity: 1;
     transform: translate3d(-50%, 0, 0) scale(1);
     pointer-events: auto;
+    z-index: 1001;
 
     &:before {
       border-radius: $border-radius;

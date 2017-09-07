@@ -119,7 +119,7 @@ $mobile-breakpoint:   480px;
 .timepicker-wrap {
   display: inline-block;
   position: relative;
-  z-index: 1001;
+  z-index: 2;
 
   *, *::after, *::before {
       box-sizing: border-box;

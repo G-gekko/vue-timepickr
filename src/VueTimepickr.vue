@@ -82,6 +82,8 @@ export default {
     },
   methods: {
     closeOutside(){
+          this.setTime();
+          this.$refs.timepicker.blur();
           this.isOpen = false
       },
     open () {
@@ -119,7 +121,7 @@ $mobile-breakpoint:   480px;
 .timepicker-wrap {
   display: inline-block;
   position: relative;
-  z-index: 1001;
+  z-index: 2;
 
   *, *::after, *::before {
       box-sizing: border-box;

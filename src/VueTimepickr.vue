@@ -82,6 +82,8 @@ export default {
     },
   methods: {
     closeOutside(){
+          this.setTime();
+          this.$refs.timepicker.blur();
           this.isOpen = false
       },
     open () {
